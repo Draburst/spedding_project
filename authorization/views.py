@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 class SignupView(CreateView):
     form_class = SignupForm
     template_name = 'registration/signup.html'
-    success_url = '/login'
+    success_url = '/auth/login'
 
     def form_valid(self, form):
         super().form_valid(form)
