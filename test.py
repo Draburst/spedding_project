@@ -5,11 +5,10 @@ def signup_test():
     base_url = "http://localhost:8000/auth/signup/"
 
     user_data = {
-        'username': 'testuser3',
+        'username': 'testuser4',
         'email': 'testuser@example.com',
         'password1': 'testpassword',
         'password2': 'testpassword',
-        
     }
 
     response = requests.post(base_url, data=user_data)
