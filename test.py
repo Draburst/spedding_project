@@ -6,11 +6,17 @@ def signup_test():
 
     user_data = {
         'username': 'testuser4',
+<<<<<<< HEAD
         'username': 'testuser5',
         'email': 'testuser@example.com',
         'password1': 'testpassword',
         'password2': 'testpassword',
 
+=======
+        'email': 'testuser@example.com',
+        'password1': 'testpassword',
+        'password2': 'testpassword',
+>>>>>>> 49b2d5abfb32e2cbc97dc268c66129195453b95b
     }
 
     response = requests.post(base_url, data=user_data)
