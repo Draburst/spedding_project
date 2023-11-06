@@ -5,4 +5,5 @@ from .views import General_stor
 
 urlpatterns = [
     path('', General_stor.as_view(), name='main'),
+    
 ]

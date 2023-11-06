@@ -12,3 +12,4 @@ class General_stor(TemplateView):
         return contex
     
 
+

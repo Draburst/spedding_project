@@ -1,15 +1,53 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>base</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles_b.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Design | Draburst</title>
 </head>
+
 <body>
+
     <div class="container">
-        <h1>Витрати</h1>
-        <p>Дізнайтеся, як керувати своїми фінансами.</p>
-        <button>Деталі</button>
+        <div class="glass-container">
+            <nav class="navbar">
+                <div class="logo"><a href="#">Spending</a></div>
+                <ul class="nav-links">
+                    <li class="nav-link" id="aboutLink"><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="content">
+                <div class="main">
+                    <h2>Hey! 👋,<br>It's Draburst</h2>
+                    <p>
+                        hello everyone, this is my website for you to record your expenses <br>
+                        p.s якщо зараз захист проекта то я трішки хвилююсь <З
+                    </p>
+                    <button class="get_start" id="getStartedButton">Get Started</button>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.getElementById("getStartedButton").addEventListener("click", function() {
+            window.location.href = "/auth/signup"; 
+        });
+    </script>
+    <script>
+        document.getElementById("aboutLink").addEventListener("click", function(event) {
+            event.preventDefault(); 
+            window.location.href = "/about";
+        });
+    </script>
+    
+    
+
 </body>
+
 </html>
