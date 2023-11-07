@@ -5,5 +5,5 @@ from .views import *
 
 urlpatterns = [
     path('', MainViev.as_view(), name='main'),
-    
+    path('/h/', HistoryViev.as_view(), name='history'),
 ]

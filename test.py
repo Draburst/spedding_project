@@ -29,11 +29,11 @@ def create_transaction_test():
     base_url = "http://localhost:8000/"
 
     user_data = {
-        'amount': 10,
-        'date': '2023-11-06',
-        'description': 'milk',
-        'category': 1,
-        'user': 1
+        'amount': 100,
+        'date': '2023-11-07',
+        'description': 'transactionmoney',
+        'category': 2,
+        'user': 2
 
     }
 
@@ -41,4 +41,20 @@ def create_transaction_test():
     print(response.json())
     print(response.status_code)
 
-create_transaction_test()
+import json
+from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
+
+def history_transactions():
+    base_url = "http://localhost:8000/h"
+
+    response = requests.get(base_url)
+    
+    if response.status_code == 200:
+        data = response.json()  # Отримуємо дані як словник
+        json_data = serializers.serialize('json', data)  # Серіалізуємо словник в JSON
+        print(json_data)
+    else:
+        print("HTTP request failed with status code:", response.status_code)
+
+history_transactions()

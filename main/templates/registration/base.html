@@ -1,53 +1,30 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <title>Design | Draburst</title>
+    <title>Document</title>
 </head>
-
 <body>
-
-    <div class="container">
-        <div class="glass-container">
-            <nav class="navbar">
-                <div class="logo"><a href="#">Spending</a></div>
-                <ul class="nav-links">
-                    <li class="nav-link" id="aboutLink"><a href="#">About</a></li>
-                </ul>
-            </nav>
-            <div class="content">
-                <div class="main">
-                    <h2>Hey! 👋,<br>It's Draburst</h2>
-                    <p>
-                        hello everyone, this is my website for you to record your expenses <br>
-                        p.s якщо зараз захист проекта то я трішки хвилююсь <З
-                    </p>
-                    <button class="get_start" id="getStartedButton">Get Started</button>
-                </div>
-                    </div>
-                </div>
-            </div>
+    <div className="Sidebar">
+        <div className="item">
+            <img class="icon" src="icon1.png"/>
+            <div className="text">The app</div>
         </div>
+        <hr />
+        <div className="item">
+            <img class="icon" src="icon2.png"/>
+            <div className="text">History</div>
+        </div>
+        <div className="item">
+            <img class="icon" src="icon3.png"/>
+            <div className="text">Support</div>
+        </div>
+
+        </div>
+
     </div>
-
-    <script>
-        document.getElementById("getStartedButton").addEventListener("click", function() {
-            window.location.href = "/auth/signup"; 
-        });
-    </script>
-    <script>
-        document.getElementById("aboutLink").addEventListener("click", function(event) {
-            event.preventDefault(); 
-            window.location.href = "/about";
-        });
-    </script>
-    
-    
-
 </body>
-
 </html>

@@ -4,7 +4,7 @@ import json
 from .models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from .forms import TransactionForm
+from .forms import *
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -45,5 +45,29 @@ class MainViev(View):
                 'transaction_id': transaction.id,
                 'transaction_amount': transaction.amount
             }
-            
             return JsonResponse(data, status=400)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class HistoryViev(View):
+
+    def get(self, request):
+        try:
+            transactions = Transaction.objects.filter(user=request.user.id)
+
+        
+            data = {
+                'message': 'Transactions retrieved successfully',
+                'transactions': transactions
+            }
+
+            return JsonResponse(data, status=200)
+        
+        except Exception as error:
+            data = {
+                'message': f'{error}'
+            }
+
+            return JsonResponse(data, status=404)
+
+            
