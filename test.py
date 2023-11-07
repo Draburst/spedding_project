@@ -5,18 +5,11 @@ def signup_test():
     base_url = "http://localhost:8000/auth/signup/"
 
     user_data = {
-        'username': 'testuser4',
-<<<<<<< HEAD
-        'username': 'testuser5',
+        'username': 'testuser6',
         'email': 'testuser@example.com',
         'password1': 'testpassword',
         'password2': 'testpassword',
 
-=======
-        'email': 'testuser@example.com',
-        'password1': 'testpassword',
-        'password2': 'testpassword',
->>>>>>> 49b2d5abfb32e2cbc97dc268c66129195453b95b
     }
 
     response = requests.post(base_url, data=user_data)
@@ -31,4 +24,21 @@ def signup_test():
     else:
         print("Failed to creat  e a user. Status code:", response.status_code)
 
-signup_test()
+def create_transaction_test():
+
+    base_url = "http://localhost:8000/"
+
+    user_data = {
+        'amount': 10,
+        'date': '2023-11-06',
+        'description': 'milk',
+        'category': 1,
+        'user': 1
+
+    }
+
+    response = requests.post(base_url, data=user_data)
+    print(response.json())
+    print(response.status_code)
+
+create_transaction_test()
