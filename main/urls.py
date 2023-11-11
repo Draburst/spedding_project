@@ -1,9 +1,9 @@
 from django.urls import path
-from django.contrib.auth.views import LogoutView
-from .views import *
+from .views import MainView, HistoryViev
 
 
 urlpatterns = [
-    path('', MainViev.as_view(), name='main'),
+    path('', MainView.as_view(), name='main'),
     path('/h/', HistoryViev.as_view(), name='history'),
+    path('h/', HistoryViev.as_view(), name='history'),
 ]

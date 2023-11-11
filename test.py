@@ -46,7 +46,8 @@ from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 
 def history_transactions():
-    base_url = "http://localhost:8000/h"
+
+    base_url = "http://localhost:8000/"
 
     response = requests.get(base_url)
     
