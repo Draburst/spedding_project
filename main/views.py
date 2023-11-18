@@ -26,10 +26,12 @@ class MainView(View):
             }
             return JsonResponse(data, status=200)
         except Exception as error:
+            print(str(error))
             data = {
                 'message': str(error),
             }
-            return JsonResponse(data, status=404)
+
+            return JsonResponse(data, status=500)
 
         
     def post(self, request):
@@ -51,7 +53,7 @@ class MainView(View):
                 'transaction_amount': transaction.amount
             }
             return JsonResponse(data, status=400)
-
+        
 
 @method_decorator(csrf_exempt, name='dispatch')
 class HistoryViev(View):
@@ -67,6 +69,7 @@ class HistoryViev(View):
             }
 
             return JsonResponse(data, status=200)
+            
         
         except Exception as error:
             data = {

@@ -41,7 +41,8 @@ class CustomLoginView(LoginView):
                 messages.warning(self.request, error)
 
         return super().form_invalid(form)
-
+        
+    
 
 from django.shortcuts import render
 
