@@ -24,7 +24,9 @@ class MainView(View):
                 'message': 'User has found successfully',
                 'user': user_dict,
             }
+            
             return JsonResponse(data, status=200)
+        
         except Exception as error:
             print(str(error))
             data = {

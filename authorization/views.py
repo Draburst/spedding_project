@@ -32,7 +32,7 @@ class SignupView(CreateView):
             return JsonResponse({'message': 'Помилка в даті'}, status=422)
         else:
             return JsonResponse({'message': 'Помилка валідації форми'}, status=400)
-        return JsonResponse({'message': 'Помилка валідації форми'}, status=400)
+       
 
 class CustomLoginView(LoginView):
     def form_invalid(self, form):

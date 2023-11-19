@@ -5,10 +5,10 @@ def signup_test():
     base_url = "http://localhost:8000/auth/signup/"
 
     user_data = {
-        'username': 'testuser6',
-        'email': 'testuser@example.com',
-        'password1': 'testpassword',
-        'password2': 'testpassword',
+        'username': 'testuser7',
+        'email': 'testusers@example.com',
+        'password1': 'testpasswor',
+        'password2': 'testpasswor',
 
     }
 
@@ -22,7 +22,9 @@ def signup_test():
         print("Failed to create a user. Validation errors:")
         print(response.json().get('errors'))
     else:
-        print("Failed to creat  e a user. Status code:", response.status_code)
+        print("Failed to create a user. Status code:", response.status_code)
+
+signup_test()
 
 def create_transaction_test():
 
@@ -58,4 +60,3 @@ def history_transactions():
     else:
         print("HTTP request failed with status code:", response.status_code)
 
-history_transactions()
