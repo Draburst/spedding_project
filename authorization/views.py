@@ -11,28 +11,29 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class SignupView(CreateView):
+class SignupView(View):
     form_class = SignupForm
-    template_name = 'registration/signup.html'
     success_url = '/login'
 
-    def form_valid(self, form):
-        super().form_valid(form)
-        return JsonResponse({'message': 'User created Successfully'}, status=201)
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return JsonResponse({'form': form.as_table()})
 
-    def form_invalid(self, form):
-        print(form.as_ul())
-        print(form.errors)
-        for errors in form.errors.values():
-            for error in errors:
-                messages.warning(self.request, error)
-
-
-        if 'birth_date' in form.errors:
-            return JsonResponse({'message': 'Помилка в даті'}, status=422)
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'message': 'User created Successfully'}, status=201)
         else:
-            return JsonResponse({'message': 'Помилка валідації форми'}, status=400)
-       
+            errors = {}
+            for field, field_errors in form.errors.items():
+                errors[field] = [error for error in field_errors]
+            
+            if 'birth_date' in errors:
+                return JsonResponse({'message': 'Помилка в даті'}, status=422)
+            else:
+                print(errors)
+                return JsonResponse({'message': 'Помилка валідації форми', 'errors': errors}, status=400)
 
 class CustomLoginView(LoginView):
     def form_invalid(self, form):

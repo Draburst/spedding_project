@@ -10,9 +10,7 @@
 
 <h2>Signup</h2>
 
-<form method="post" action="{% url 'http://localhost:8000/auth/signup/' %}">
-    {% csrf_token %}
-
+<form id="signupForm">
     <div>
         <label for="id_username">Username:</label>
         <input type="text" id="id_username" name="username" required>
@@ -25,20 +23,20 @@
 
     <div>
         <label for="id_password">Password:</label>
-        <input type="password" id="id_password" name="password" required>
+        <input type="password" id="id_password" name="password1" required>
     </div>
 
 
     <div>
         <label for="id_confirm_password">Confirm Password:</label>
-        <input type="password" id="id_confirm_password" name="confirm_password" required>
+        <input type="password" id="id_confirm_password" name="password2" required>
     </div>
     <div>
         <button type="submit">Signup</button>
     </div>
 </form>
 
-<p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
-
+<p>Already have an account? <a href="./index.html">Login here</a>.</p>
+<script src="signup.js"></script>
 </body>
 </html>

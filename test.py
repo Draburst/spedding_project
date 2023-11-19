@@ -5,10 +5,10 @@ def signup_test():
     base_url = "http://localhost:8000/auth/signup/"
 
     user_data = {
-        'username': 'testuser7',
+        'username': 'testuser8',
         'email': 'testusers@example.com',
-        'password1': 'testpasswor',
-        'password2': 'testpasswor',
+        'password1': 'somestrongpass',
+        'password2': 'somestrongpass',
 
     }
 
@@ -24,7 +24,6 @@ def signup_test():
     else:
         print("Failed to create a user. Status code:", response.status_code)
 
-signup_test()
 
 def create_transaction_test():
 
