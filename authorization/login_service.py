@@ -6,7 +6,7 @@ def authenticate_user(username, password):
     try:
         user = User.objects.get(username=username)
 
-        if check_password_hash(user.password, password):
+        if user.check_password(password):
             return user
         else:
             return False

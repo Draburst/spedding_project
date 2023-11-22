@@ -3,3 +3,6 @@ venv
 __pycache__
 .idea
 migrations
+node_modules
+package-lock.json
+package.json

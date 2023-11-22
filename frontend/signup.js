@@ -41,5 +41,13 @@ document.getElementById("form_signin").addEventListener('submit', function(el){
     })
 
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        if (data.message == 'Login successful') {
+            window.location.href='main.html'
+        }
+
+        else {
+            // logic error
+        }
+    })
 }) 

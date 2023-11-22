@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Line Chart Example</title>
+</head>
+<body>
+    <canvas id="lineChart" width="900" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById("lineChart");
+        var lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2023-01-01', '2023-01-05', '2023-01-10', '2023-01-15'],
+                datasets: [
+                    {
+                        
+                        label: 'Data points',
+                        data: [650, 590, 800, 810,],
+                        fill: false,
+                        borderColor: 'rgba(33, 87, 141, 1)',
+                        tension: 0.1
+                    }
+                ]
+            },
+            options : {
+                responsive: false
+            }
+        })
+
+    </script>
+    
+</body>
+</html>
+
+
+  
