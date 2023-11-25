@@ -13,28 +13,32 @@ from .login_service import authenticate_user
 @method_decorator(csrf_exempt, name='dispatch')
 class SignupView(View):
     form_class = SignupForm
-    success_url = '/login'
-
+    
     def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return JsonResponse({'form': form.as_table()})
+        return JsonResponse({'message': 'Invalid request method'})
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body.decode('utf-8'))
         form = self.form_class(data)
         if form.is_valid():
             form.save()
-            return JsonResponse({'message': 'User created Successfully'}, status=201)
+            user = authenticate_user(data['username'], data['password1'])
+            payload = {
+                'user_id': user.id,
+                'username': user.username,
+            }
+            token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+            return JsonResponse({'message': 'User created Successfully', 'token': token}, status=201)
         else:
             errors = {}
             for field, field_errors in form.errors.items():
                 errors[field] = [error for error in field_errors]
             
             if 'birth_date' in errors:
-                return JsonResponse({'message': 'Помилка в даті'}, status=422)
+                return JsonResponse({'message': f'{errors}'}, status=422)
             else:
                 print(errors)
-                return JsonResponse({'message': 'Помилка валідації форми', 'errors': errors}, status=400)
+                return JsonResponse({'message': 'Bad Form request', 'errors': errors}, status=400)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CustomLoginView(View):

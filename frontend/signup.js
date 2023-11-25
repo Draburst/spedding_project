@@ -25,7 +25,16 @@ document.getElementById("form_signup").addEventListener('submit', function(el){
     })
 
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        if(data['token']){
+            setCookie('token', data['token'], 10);
+            window.location.href='main.html';
+        }
+        else {
+            let error_line = document.getElementById('signup_error_line')
+            error_line.innerHTML = `${JSON.stringify(data['errors'])}`
+        }
+    })
 }) 
 
 document.getElementById("form_signin").addEventListener('submit', function(el){
@@ -42,12 +51,27 @@ document.getElementById("form_signin").addEventListener('submit', function(el){
 
     .then(response => response.json())
     .then(data => {
-        if (data.message == 'Login successful') {
-            window.location.href='main.html'
+        if (data['token']) {
+            deleteCookie('token');
+            setCookie('token', data['token'], 10);
+            window.location.href='main.html';
         }
 
         else {
-            // logic error
+            let error_line = document.getElementById('signin_error_line')
+            error_line.innerHTML = `${data['errors']}`
         }
     })
 }) 
+
+// Logic of set Cookies: 'name=value; expires=100; path=/'
+function setCookie(name, value, daysToLive){
+    var date = new Date();
+    date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
+    var expires = `expires=${date.toUTCString}`;
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+}
+
+function deleteCookie(name){
+    setCookie(name, null, null);
+}

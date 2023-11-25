@@ -14,7 +14,6 @@ class User(AbstractUser):
 
 class TransactionCategory(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
 
     def __str__(self):
         return self.name
@@ -23,11 +22,10 @@ class TransactionCategory(models.Model):
 class Transaction(models.Model):
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     date = models.DateField()
-    description = models.TextField()
     category = models.ForeignKey(TransactionCategory, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.amount} - {self.description}"
+        return f"{self.amount} - {self.category}"
 
 

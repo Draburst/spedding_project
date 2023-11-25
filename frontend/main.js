@@ -45,3 +45,41 @@ window.addEventListener('resize', () => {
     }
 });
 
+// Some dark part of code
+// Some part of light and clear code
+
+var token = getCookie('token');
+console.log(token);
+
+fetch("http://localhost:8000/", {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({'token': token})
+})
+    .then(response => response.json())
+    .then(data => {
+        balance = document.getElementById("balance_user");
+        balance.innerHTML = `$${data['balance']}`;
+        transaction = document.getElementById("transaction_history");
+        transaction.innerHTML += `$${data['transactions']}`;
+    });
+
+    
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+
+function setCookie(name, value, daysToLive){
+    var date = new Date();
+    date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
+    var expires = `expires=${date.toUTCString}`;
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+}
+    
+function deleteCookie(name){
+    setCookie(name, null, null);
+}
+
