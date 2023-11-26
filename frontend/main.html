@@ -19,7 +19,7 @@
         <ul class="side-menu">
             <li class="active"><a href="main.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
             <li><a href="about.html"><i class='bx bx-store-alt'></i>About</a></li>
-            <li><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
+            <li ><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
             <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
         </ul>
         <ul class="side-menu">
@@ -38,9 +38,9 @@
         <!-- Navbar -->
         <nav>
             <i class='bx bx-menu'></i>
-            <form action="#">
+            <form id="search">
                 <div class="form-input">
-                    <input type="search" placeholder="Search...">
+                    <input name='date' type="date" placeholder="Search...">
                     <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
                 </div>
             </form>
@@ -63,10 +63,7 @@
                 <li><i class='bx bx-dollar-circle'></i>
                     <span class="info">
                         <h3>
-                            <div id="balance_user">
-                                $0
-                            </div>
-                            
+                            <div id="balance_user">$0</div>
                         </h3>
                         <p>Balance</p>
                     </span>
@@ -84,17 +81,15 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Total</th>
-                                <th>Transaction Date</th>
+                                <th style="padding-right: 40px;">Total</th>
+                                <th style="padding-right: 10px;">Transaction Date</th>
                                 <th>Category</th>
-                                <div  id="transaction_history">
-                                    
-                                </div>
                             </tr>
                         </thead>
-                        
                     </table>
                 </div>
+            </div>
+            <div id="all_transactions">
 
             </div>
 
@@ -102,7 +97,7 @@
 
     </div>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

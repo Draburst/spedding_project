@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class User(AbstractUser):
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -27,5 +29,5 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.amount} - {self.category}"
-
+    
 

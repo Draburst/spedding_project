@@ -4,3 +4,5 @@ from .models import *
 
 
 admin.site.register(TransactionCategory)
+admin.site.register(User)
+admin.site.register(Transaction)

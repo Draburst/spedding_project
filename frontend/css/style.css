@@ -516,3 +516,20 @@ body{
     background: var(--warning);
 }
 
+.bottom-data {
+    position: relative;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: red; /* або інший колір на ваш вибір */
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s ease; /* додає плавний перехід */
+}
+
+.delete-button:active {
+    background-color: darkred; /* колір при натисканні */
+}
