@@ -24,18 +24,23 @@ function getImg() {
 
 getImg()
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
-
+console.log(getCookie('token'))
 
 fetch('http://127.0.0.1:8000/get_profile_info/', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({'token': token})
+    body: JSON.stringify({'token': getCookie('token')})
 })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        console.log(data['user_info']);
         username = document.getElementById('user_info');
-        username.innerHTML = `${data['username']}$`;
+        username.innerHTML = data['user_info'];
 
     })

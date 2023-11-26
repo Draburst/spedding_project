@@ -125,7 +125,7 @@ class UserProfileView(View):
             data = json.loads(request.body.decode('utf-8'))
             jwt_data = jwt.decode(data['token'], SECRET_KEY, algorithms=['HS256'])
             print(jwt_data)
-            user_data = get_username_and_email(jwt_data['username'])
+            user_data = jwt_data.get('username')
             
             return JsonResponse({'message': 'User info has successful', 'user_info': user_data}, status=200)
             
