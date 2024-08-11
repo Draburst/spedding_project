@@ -31,7 +31,7 @@ from django.core import serializers
 def get_transactions():
 
     base_url = "http://localhost:8000/"
-    data = {"token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImJvdCJ9.G5rLjiLW63VJI2IJoJHpSY9b3Ok-EwELWa-0Mb-J2lU'}
+    data = {"token": ''}
     json_data = json.dumps(data)
     headers = {'Content-Type': 'application/json'}
 
@@ -47,7 +47,7 @@ def get_transactions():
 def create_transaction():
 
     base_url = "http://localhost:8000/create_transaction/"
-    data = {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImJvdCJ9.G5rLjiLW63VJI2IJoJHpSY9b3Ok-EwELWa-0Mb-J2lU',
+    data = {'token': '',
             'amount': 1000.00,
             'date': '2023-11-23',
             'category': 2,
@@ -68,7 +68,7 @@ def create_transaction():
 def get_history_transactions():
 
     base_url = "http://localhost:8000/history/"
-    data = {"token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImJvdCJ9.G5rLjiLW63VJI2IJoJHpSY9b3Ok-EwELWa-0Mb-J2lU'}
+    data = {"token": ''}
     json_data = json.dumps(data)
     headers = {'Content-Type': 'application/json'}
 
@@ -85,7 +85,7 @@ def get_history_transactions():
 def search_data():
     base_url = 'http://localhost:8000/search/'
     data = {
-        'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImJvdCJ9.G5rLjiLW63VJI2IJoJHpSY9b3Ok-EwELWa-0Mb-J2lU',
+        'token': '',
         'date': '2023-11-26'
     }
     json_data = json.dumps(data)
