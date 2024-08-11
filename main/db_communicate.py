@@ -1,5 +1,5 @@
 from django.forms.models import model_to_dict
-from main.models import Transaction
+from main.models import Transaction, TransactionCategory
 from django.contrib.auth.models import User
 
 def get_user_transactions(user_id, date=None):
@@ -69,3 +69,15 @@ def get_username_and_email(username, email):
     except User.DoesNotExist:
         print(f"User with username '{username}' and email '{email}' does not exist.")
         return {}
+    
+    
+from django.forms.models import model_to_dict
+
+def get_transaction_categories():
+    categories = TransactionCategory.objects.all()
+    categories_dict_list = [model_to_dict(category) for category in categories]
+    return categories_dict_list
+
+# Викликати функцію та вивести результат
+categories_result = get_transaction_categories()
+print(categories_result)

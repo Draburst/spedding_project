@@ -3,7 +3,7 @@ from django.views import View
 import json
 
 import jwt
-from main.db_communicate import get_transactions_by_day, get_user_transactions, get_username_and_email
+from main.db_communicate import get_transaction_categories, get_transactions_by_day, get_user_transactions, get_username_and_email
 
 from spending.settings import SECRET_KEY
 from .models import User
@@ -85,6 +85,12 @@ class HistoryViev(View):
 @method_decorator(csrf_exempt, name='dispatch')
 class CreateTransactionView(View):
     
+    def get(self, request):
+        try:
+            category_list = get_transaction_categories()
+            return JsonResponse({'message': 'Data has found suuccesful', 'category_list': category_list}, status=200)
+        except Exception as err:
+            return JsonResponse({'message': f'Error - {err}'})
     
     def post(self, request):
         data = json.loads(request.body.decode('utf-8'))
@@ -92,8 +98,8 @@ class CreateTransactionView(View):
         token = data['token']
         jwt_data = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
         user_id = jwt_data['user_id']   
-        if data['category'] != 6:
-            data['amount'] = -data['amount']
+        if int(data['category']) != 6:
+            data['amount'] = -int(data['amount'])
         form = TransactionForm({'amount': data['amount'], 'date': data['date'], 'category': data['category'], 'user': user_id})
         if form.is_valid():
             transaction = form.save()
